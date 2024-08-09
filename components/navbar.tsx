@@ -11,10 +11,11 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function NavBarResponsive() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [pathNameIs, setPathNameIs] = React.useState("");
 
   const menuItems = [
     "Profile",
@@ -30,6 +31,11 @@ export default function NavBarResponsive() {
   ];
 
   const rc = useRouter();
+  const pathName = usePathname();
+
+  React.useEffect(() => {
+    setPathNameIs(pathName);
+  }, [pathName]);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -45,17 +51,17 @@ export default function NavBarResponsive() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/">
             Home
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current="page" href="#">
+        <NavbarItem>
+          <Link color="foreground" href="/products">
             Products
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Link color="foreground" href="/contact">
             Contact
           </Link>
         </NavbarItem>
