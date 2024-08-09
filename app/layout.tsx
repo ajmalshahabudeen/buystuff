@@ -5,7 +5,8 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+import { fontPoppins } from "@/config/fonts";
+import { MainHead } from "@/components/layout-head/main-head";
 
 export const metadata: Metadata = {
   title: {
@@ -35,11 +36,13 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          "min-h-screen bg-background font-poppins antialiased",
+          fontPoppins.className,
         )}
       >
+        {/* @ts-ignore */}
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <MainHead />
           <div className="relative flex flex-col h-screen">
             <main className="container flex-grow">{children}</main>
           </div>
