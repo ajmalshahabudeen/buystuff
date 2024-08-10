@@ -27,6 +27,8 @@ export const products = pgTable("products", {
 	name: varchar("name", { length: 255 }),
 	image: varchar("image", { length: 255 }),
 	price: varchar("price", { length: 255 }),
+	tags: text("tags").array(),
+	description: text("description"),
 });
 
 export const verificationToken = pgTable("verificationToken", {
