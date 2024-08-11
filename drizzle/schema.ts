@@ -1,7 +1,13 @@
-import { pgTable, unique, text, timestamp, foreignKey, serial, varchar, primaryKey, integer, boolean } from "drizzle-orm/pg-core"
+import { pgTable, foreignKey, text, timestamp, unique, serial, varchar, primaryKey, integer, boolean } from "drizzle-orm/pg-core"
   import { sql } from "drizzle-orm"
 
 
+
+export const session = pgTable("session", {
+	sessionToken: text("sessionToken").primaryKey().notNull(),
+	userId: text("userId").notNull().references(() => user.id, { onDelete: "cascade" } ),
+	expires: timestamp("expires", { mode: 'string' }).notNull(),
+});
 
 export const user = pgTable("user", {
 	id: text("id").primaryKey().notNull(),
@@ -14,12 +20,6 @@ export const user = pgTable("user", {
 	return {
 		userEmailUnique: unique("user_email_unique").on(table.email),
 	}
-});
-
-export const session = pgTable("session", {
-	sessionToken: text("sessionToken").primaryKey().notNull(),
-	userId: text("userId").notNull().references(() => user.id, { onDelete: "cascade" } ),
-	expires: timestamp("expires", { mode: 'string' }).notNull(),
 });
 
 export const products = pgTable("products", {
