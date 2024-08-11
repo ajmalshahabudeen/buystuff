@@ -11,7 +11,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <Box className="fixed top-0 flex w-full p-10 items-center justify-between gap-4">
         <Logo />
-        <Box className="inline-flex items-center gap-5">
+        <Box className="hidden md:inline-flex items-center gap-5">
           <Button
             variant={"link"}
             size={"lg"}
@@ -21,6 +21,18 @@ export default function Home() {
           </Button>
           <ThemeToggle />
         </Box>
+        
+        <Box className="flex md:hidden fixed bottom-0 right-0 pb-4 justify-center items-center w-full gap-5">
+          <Button
+            variant={"link"}
+            size={"lg"}
+            onClick={() => route.push("/login")}
+          >
+            Login / Register
+          </Button>
+          <ThemeToggle />
+        </Box>
+
       </Box>
       <Box className="flex flex-col gap-3 items-center">
         <p className="text-6xl">Welcome</p>

@@ -41,7 +41,6 @@ export const LoginForm = () => {
               placeholder="cooluser@gmail.com"
               required
               autoComplete="off"
-              autoFocus
             />
           </FormControl>
           <FormControl>
