@@ -8,9 +8,9 @@ interface Credentials {
 }
 
 export const GoogleSignInAction = async () => {
-    await signIn("google");
+    await signIn("google" , { redirectTo: "/shop" });
 }
 
 export const CredentialsSignInAction = async (formData: Credentials) => {
-    await signIn("credentials", formData);
+    await signIn("credentials", formData, { redirectTo: "/shop" });
 }

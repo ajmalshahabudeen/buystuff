@@ -18,8 +18,11 @@ export default auth(async function middleware(req: any) {
     const newUrl = new URL("/login", req.nextUrl.origin);
     return Response.redirect(newUrl);
   }
-  if (req.auth && req.nextUrl.pathname === "/login") {
-    const newUrl = new URL("/test", req.nextUrl.origin);
+  if (
+    req.auth &&
+    (req.nextUrl.pathname === "/login" || req.nextUrl.pathname === "/register")
+  ) {
+    const newUrl = new URL("/shop", req.nextUrl.origin);
     return Response.redirect(newUrl);
   }
 });
