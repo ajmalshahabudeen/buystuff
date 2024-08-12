@@ -1,6 +1,7 @@
 "use client";
 import { Logo } from "@/components/MainHead/Logo";
 import { ThemeToggle } from "@/components/MainHead/ThemeToggle";
+import Help from "@/components/Other/Help";
 import { Box, Button } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 
@@ -19,6 +20,7 @@ export default function Home() {
           >
             Login / Register
           </Button>
+          <Help />
           <ThemeToggle />
         </Box>
         
@@ -30,9 +32,9 @@ export default function Home() {
           >
             Login / Register
           </Button>
+          <Help />
           <ThemeToggle />
         </Box>
-
       </Box>
       <Box className="flex flex-col gap-3 items-center">
         <p className="text-6xl">Welcome</p>

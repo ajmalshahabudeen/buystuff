@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Divider,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -13,10 +14,12 @@ import {
 } from "@chakra-ui/react";
 import { poppins } from "@/config/fonts";
 import { CredentialsSignInAction } from "@/utils/authActions/signInActions";
+import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const route = useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(email, password);
@@ -68,7 +71,17 @@ export const LoginForm = () => {
         <Divider />
         <AbsoluteCenter px="4">or</AbsoluteCenter>
       </Box>
-      <GoogleSignIn />
+      <Flex flexDirection={"column"} gap={5}>
+        <GoogleSignIn />
+        <Button
+          variant="link"
+          onClick={() => {
+            route.push("/register");
+          }}
+        >
+          Create an Account
+        </Button>
+      </Flex>
     </Box>
   );
 };

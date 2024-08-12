@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "reset": "rm -rf .next && rm -rf node_modules && bun i && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
