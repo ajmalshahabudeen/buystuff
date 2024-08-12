@@ -25,7 +25,7 @@ const MobileFooter = () => {
 
   const fetchSession = async () => {
     const session = await GetSession();
-    if (session) {
+    if (session?.user) {
       setLoggedIn(true);
     }
   };
