@@ -1,8 +1,39 @@
-import { Box, Flex, IconButton } from "@chakra-ui/react";
+"use client";
+import signOutAction from "@/utils/authActions/signOutAction";
+import { GetSession } from "@/utils/session";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const MobileFooter = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const fetchSession = async () => {
+    const session = await GetSession();
+    if (session) {
+      setLoggedIn(true);
+    }
+
+    useEffect(() => {
+      fetchSession();
+    }, []);
+  };
+
   return (
     <Box className="border-t-2">
       <Flex justifyContent={"space-around"} gap={5} p={2}>
@@ -30,14 +61,33 @@ const MobileFooter = () => {
             size={"lg"}
           />
         </Box>
-        <Box>
-          <IconButton
-            variant="ghost"
-            icon={<LogoutIcon />}
-            aria-label="Get Help"
-            size={"lg"}
-          />
-        </Box>
+        {loggedIn && (
+          <Box>
+            <IconButton
+              variant="ghost"
+              icon={<LogoutIcon />}
+              aria-label="Get Help"
+              size={"lg"}
+              onClick={onOpen}
+            />
+            <Modal onClose={onClose} isOpen={isOpen} isCentered>
+              <ModalOverlay />
+              <ModalContent m={5}>
+                <ModalHeader>Confirm</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Text>Are you sure you want to logout?</Text>
+                </ModalBody>
+                <ModalFooter gap={5}>
+                  <Button onClick={onClose}>Close</Button>
+                  <Button onClick={() => signOutAction()} colorScheme="red">
+                    Logout
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </Box>
+        )}
       </Flex>
     </Box>
   );
