@@ -28,11 +28,10 @@ const MobileFooter = () => {
     if (session) {
       setLoggedIn(true);
     }
-
-    useEffect(() => {
-      fetchSession();
-    }, []);
   };
+  useEffect(() => {
+    fetchSession();
+  }, []);
 
   return (
     <Box className="border-t-2">
