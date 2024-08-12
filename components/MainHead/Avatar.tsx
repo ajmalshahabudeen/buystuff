@@ -36,9 +36,24 @@ export const Avatar = () => {
           variant="outline"
         />
         <MenuList>
-          <MenuItem icon={<AccountIcon />}>Account</MenuItem>
-          <MenuItem icon={<CartIcon />}>Cart</MenuItem>
-          <MenuItem icon={<SettingsIcon />}>Settings</MenuItem>
+          <MenuItem
+            icon={<AccountIcon />}
+            onClick={() => route.push("/shop/account")}
+          >
+            Account
+          </MenuItem>
+          <MenuItem
+            icon={<CartIcon />}
+            onClick={() => route.push("/shop/cart")}
+          >
+            Cart
+          </MenuItem>
+          <MenuItem
+            icon={<SettingsIcon />}
+            onClick={() => route.push("/shop/settings")}
+          >
+            Settings
+          </MenuItem>
           {session?.user?.email ? (
             <MenuItem icon={<LogoutIcon />} onClick={() => signOutAction()}>
               Sign Out
