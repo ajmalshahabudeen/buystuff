@@ -43,13 +43,17 @@ export default function Home() {
           <ThemeToggle />
         </Box>
         <Box className="flex md:hidden fixed bottom-0 right-0 pb-4 justify-center items-center w-full gap-5">
-          <Button
-            variant={"link"}
-            size={"lg"}
-            onClick={() => route.push("/login")}
-          >
-            Login / Register
-          </Button>
+          {loggedIn ? (
+            <Text>{username}</Text>
+          ) : (
+            <Button
+              variant={"link"}
+              size={"lg"}
+              onClick={() => route.push("/login")}
+            >
+              Login / Register
+            </Button>
+          )}
           <Help />
           <ThemeToggle />
         </Box>

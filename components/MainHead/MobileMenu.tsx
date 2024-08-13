@@ -6,7 +6,6 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
   IconButton,
   Link,
@@ -64,28 +63,48 @@ const MobileMenu = () => {
             <Center h={"full"} flexDirection={"column"} gap={15}>
               <ScaleFade initialScale={0.0} in={isOpen} delay={0.2}>
                 <Box>
-                  <Link as={NextLink} href="/shop" fontSize={"2.8rem"}>
+                  <Link
+                    as={NextLink}
+                    href="/shop"
+                    fontSize={"2.8rem"}
+                    onClick={onClose}
+                  >
                     Home
                   </Link>
                 </Box>
               </ScaleFade>
               <ScaleFade initialScale={0.0} in={isOpen} delay={0.3}>
                 <Box>
-                  <Link as={NextLink} href="/shop" fontSize={"2.6rem"}>
+                  <Link
+                    as={NextLink}
+                    href="/shop/products"
+                    fontSize={"2.6rem"}
+                    onClick={onClose}
+                  >
                     Products
                   </Link>
                 </Box>
               </ScaleFade>
               <ScaleFade initialScale={0.0} in={isOpen} delay={0.4}>
                 <Box>
-                  <Link as={NextLink} href="/shop" fontSize={"2.2rem"}>
+                  <Link
+                    as={NextLink}
+                    href="/shop/contact"
+                    fontSize={"2.2rem"}
+                    onClick={onClose}
+                  >
                     Contact
                   </Link>
                 </Box>
               </ScaleFade>
               <ScaleFade initialScale={0.0} in={isOpen} delay={0.5}>
                 <Box>
-                  <Link as={NextLink} href="/shop" fontSize={"1.5rem"}>
+                  <Link
+                    as={NextLink}
+                    href="/shop/help"
+                    fontSize={"1.5rem"}
+                    onClick={onClose}
+                  >
                     Help
                   </Link>
                 </Box>
@@ -98,15 +117,25 @@ const MobileMenu = () => {
               className="fixed bottom-5 right-5"
             >
               <Box className="flex gap-5 items-center">
-                {!loggedIn && <Box className="flex gap-5 items-center">
-                  <Button variant={"link"} size={"lg"} onClick={() => route.push("/login")}>
-                    Login
-                  </Button>
-                  <Text>/</Text>
-                  <Button variant={"link"} size={"lg"} onClick={() => route.push("/register")}>
-                    Sign Up
-                  </Button>
-                </Box>}
+                {!loggedIn && (
+                  <Box className="flex gap-5 items-center">
+                    <Button
+                      variant={"link"}
+                      size={"lg"}
+                      onClick={() => route.push("/login")}
+                    >
+                      Login
+                    </Button>
+                    <Text>/</Text>
+                    <Button
+                      variant={"link"}
+                      size={"lg"}
+                      onClick={() => route.push("/register")}
+                    >
+                      Sign Up
+                    </Button>
+                  </Box>
+                )}
                 <ThemeToggle />
               </Box>
             </ScaleFade>

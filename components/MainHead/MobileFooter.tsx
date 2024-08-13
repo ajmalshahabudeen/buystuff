@@ -17,11 +17,13 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 const MobileFooter = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const route = useRouter();
 
   const fetchSession = async () => {
     const session = await GetSession();
@@ -42,6 +44,7 @@ const MobileFooter = () => {
             icon={<AccountIcon />}
             aria-label="Get Help"
             size={"lg"}
+            onClick={() => route.push("/shop/account")}
           />
         </Box>
         <Box>
@@ -50,6 +53,7 @@ const MobileFooter = () => {
             icon={<CartIcon />}
             aria-label="Get Help"
             size={"lg"}
+            onClick={() => route.push("/shop/cart")}
           />
         </Box>
         <Box>
@@ -58,6 +62,7 @@ const MobileFooter = () => {
             icon={<SettingsIcon />}
             aria-label="Get Help"
             size={"lg"}
+            onClick={() => route.push("/shop/settings")}
           />
         </Box>
         {loggedIn && (
