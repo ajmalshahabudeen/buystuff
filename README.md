@@ -38,3 +38,28 @@ AUTH_SECRET="secret key" -- run `bun x auth secret` to generate
 AUTH_GOOGLE_ID= google client id -- found in google console
 AUTH_GOOGLE_SECRET= google client secret -- found in google console
 ```
+
+---
+!!! Note
+- The Client part --Which is the Client side and this repo-- is open source.
+- The Admin part --Which is Admin Dashboard-- is not open to public. Please contact me if you want to purchase it.
+- The mobile application --Which is the client side mobile app-- is not open to public. Please contact me if you want to purchase it.
+
+--#-- Admin Dashboard:-
+
+- Uses Nuxt 3 and Prisma ORM.
+- Add, edit, delete categories, products, orders etc.
+- Add, edit, delete users.
+- Add, edit, delete reviews.
+- Add, edit, delete discounts.
+- Add, edit, delete coupons.
+- Add, edit, delete payment methods.
+- Add, edit, delete shipping methods.
+- More coming...
+
+--#-- Mobile App:-
+
+- Uses Expo (React Native) - ios and android.
+- Uses Honojs Backend and Prisma ORM.
+- Everything included in web app.
+- Flutter codebase coming soon...
