@@ -42,7 +42,6 @@ export default function Home() {
           <Help />
           <ThemeToggle />
         </Box>
-
         <Box className="flex md:hidden fixed bottom-0 right-0 pb-4 justify-center items-center w-full gap-5">
           <Button
             variant={"link"}
